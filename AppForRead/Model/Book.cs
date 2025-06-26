@@ -2,7 +2,7 @@
 {
     using SQLite;
 
-    [Table("Note")]
+    [Table("Book")]
     public class Book
     {
         [PrimaryKey, AutoIncrement]
