@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppForRead.View.SettingsPage"
+             Title="SettingsPage">
+	<ScrollView>
+	<VerticalStackLayout Padding="20" Spacing="15">
+		<Frame>
+			<VerticalStackLayout Spacing="10">
+				<Label Text="Пример заголовка" 
+                       FontSize="{DynamicResource FontSize}"
+                       FontFamily="{DynamicResource FontFamily}"
+                       TextColor="{DynamicResource PrimaryColor}"/>
+				<Button Text="Пример кнопки"/>
+				<Entry Text="Пример текстового поля"/>
+			</VerticalStackLayout>
+		</Frame>
+
+		<Frame>
+			<VerticalStackLayout Spacing="10">
+				<Label Text="Основной цвет:" FontAttributes="Bold"/>
+				<Picker x:Name="ColorPicker" 
+                        ItemsSource="{Binding AvailableColors}"
+                        ItemDisplayBinding="{Binding Name}">
+				</Picker>
+			</VerticalStackLayout>
+		</Frame>
+
+		<Frame>
+			<VerticalStackLayout Spacing="10">
+				<Label Text="Шрифт:" FontAttributes="Bold"/>
+				<Picker x:Name="FontPicker" 
+                        ItemsSource="{Binding AvailableFonts}"/>
+			</VerticalStackLayout>
+		</Frame>
+
+		<Frame>
+			<VerticalStackLayout Spacing="10">
+				<Label Text="Размер шрифта:" FontAttributes="Bold"/>
+				<Slider x:Name="FontSizeSlider" 
+                        Minimum="12" 
+                        Maximum="24"
+                        Value="{Binding FontSize}"/>
+				<Label Text="{Binding Source={x:Reference FontSizeSlider}, 
+                                      Path=Value, 
+                                      StringFormat='Текущий размер: {0:F0}'}"/>
+			</VerticalStackLayout>
+		</Frame>
+
+		<Button Text="Сохранить настройки" 
+                Clicked="OnSaveSettingsClicked"/>
+		<Button Text="Сбросить настройки" 
+                Clicked="OnResetSettingsClicked"
+                BackgroundColor="LightGray"/>
+	</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
